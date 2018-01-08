@@ -1,11 +1,8 @@
 <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
 
-<% form_for 
-<input type="text" id="flatpickr-input">
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    flatpickr('#flatpickr-input');
-  });
-</script>
+<%= form_for @leave do |f| %>
+  <p style='font-style: italic; font-weight: bold;'> Start Leave date </p>
+  <%=  f.date_field :leave_date, class: 'checkin', min: Date.today %>
+  <br> 
+  <%= f.submit 'Submit' %>
+<% end %>

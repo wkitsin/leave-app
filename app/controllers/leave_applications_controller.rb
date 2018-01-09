@@ -18,16 +18,14 @@ class LeaveApplicationsController < ApplicationController
 
   def create 
     leave = current_user.leave_applications.new(leave_params)
-
-    if leave.save 
-      LeaveApplicationMailer.create_leave_email(current_user, leave).deliver_later
-      flash[:notice] = "The date of leave has been submitted to #{current_user.HOD_email} for approval"
-      redirect_to root_path 
-    else 
-      error = leave.errors.messages[:leave_date][0]
-      flash[:notice] = "The leave date was not save because the date #{error}"
-      redirect_to root_path
-    end 
+      if leave.save 
+        LeaveApplicationMailer.create_leave_email(current_user, leave).deliver_later
+        flash[:notice] = "The date of leave has been submitted to #{current_user.HOD_email} for approval"
+      else 
+        error = leave.errors.messages[:leave_date][0]
+        flash[:notice] = "The leave date was not save because the date #{error}"
+      end 
+    redirect_to root_path
   end 
 
   def approval
@@ -48,8 +46,6 @@ class LeaveApplicationsController < ApplicationController
     LeaveApplicationMailer.leave_email(employee, leave_day).deliver_later
     redirect_to root_path
   end 
-
-
 
   private 
 

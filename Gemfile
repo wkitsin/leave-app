@@ -57,7 +57,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # authentication 
 gem 'devise'
 
-# calender flatpicker 
-gem 'flatpickr_rails'
+# figaro gem 
+gem 'figaro'
+
+
 
 

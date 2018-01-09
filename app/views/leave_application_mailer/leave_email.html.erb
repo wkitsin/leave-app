@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Leave approval </h1>
+    <p>
+       Employee's Email: <%= @user.email %> 
+       <br>
+       Leave Date: <%= @leave.leave_date.to_date %>
+       <br>
+       Type of Leave: <%= @leave.category %>
+       <br> 
+       Remaining Leave Days: <%= @user.balace %>
+       <br> 
+       Head of Department: <%= @user.HOD_email %>
+       <br>
+       <h4 style='font-weight: bold;'>Approval: <%= @leave.approved %></h4>
+    </p>
+  </body>
+</html>

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180109030240) do
 
   create_table "leave_applications", force: :cascade do |t|
     t.datetime "leave_date"
-    t.boolean "approved", default: false
+    t.string "approved", default: "N/A"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

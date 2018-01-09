@@ -28,4 +28,4 @@ end
 
 User.where(email: ['r.chong@buro247.my', 'k.tan@imv.com.sg', 'cm.khoo@buro247.my', 
   'j.teh@imv.com.sg', 'v.loo@imv.com.sg', 'sh.pang@imv.com.sg', 's.khu@imv.com.sg', 
-  'azreezalhafidz@staiil.my', 'wk.sin@imv.com.sg']).update(role: 'admin')
+  'azreezalhafidz@staiil.my']).update(role: 'admin')

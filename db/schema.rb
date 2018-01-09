@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108032424) do
+ActiveRecord::Schema.define(version: 20180109030240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "leaves", force: :cascade do |t|
+  create_table "leave_applications", force: :cascade do |t|
     t.datetime "leave_date"
     t.boolean "approved", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_leaves_on_user_id"
+    t.string "category"
+    t.index ["user_id"], name: "index_leave_applications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +39,15 @@ ActiveRecord::Schema.define(version: 20180108032424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role", default: "none"
+    t.string "title"
+    t.string "department"
+    t.string "HOD_email"
+    t.integer "total_al", default: 0
+    t.integer "bring_forward", default: 0
+    t.integer "replacement_leave", default: 0
+    t.integer "total_leave", default: 0
+    t.integer "leave_taken", default: 0
+    t.integer "balace", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -14,3 +14,8 @@
  *= require_self
  *= require flatpickr/material_red
  */
+
+ table, th, td {
+     border: 1px solid black;
+     border-collapse: collapse;
+ }

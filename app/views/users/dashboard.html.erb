@@ -1,8 +1,33 @@
 <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-
 <%= form_for @leave do |f| %>
-  <p style='font-style: italic; font-weight: bold;'> Start Leave date </p>
+  <p style='font-style: italic; font-weight: bold;'>Leave date </p>
   <%=  f.date_field :leave_date, class: 'checkin', min: Date.today %>
+ <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
   <br> 
   <%= f.submit 'Submit' %>
+<% end %>
+
+<br> 
+
+<% if @unapproved_leave.length != 0 %>
+  <table style="width:100%">
+    <tr>
+      <th>Employee's Email</th>
+      <th>Requested Leave Date</th>
+      <th>Balance Leave Days</th> 
+      <th>Category of Leave</th>
+      <th>Approval</th>
+    </tr>
+    <% @unapproved_leave.each do |f| %>
+      <tr>
+      <td> <%= f.user.email %> </td>
+      <td> <%= f.leave_date.to_date %> </td>
+      <td> <%= f.user.balace %> </td>
+      <td> <%= f.category %> </td>
+      <td>
+       <%= button_to 'Approve', leave_applications_approval_path, params: { 'approval' => 'approve', 'leave_id' => f.id}, method: :get %> <%= button_to 'Decline', leave_applications_approval_path, params: { 'approval' => 'decline', 'leave_id' => f.id}, method: :get %> 
+      </td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>

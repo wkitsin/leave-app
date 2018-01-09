@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :users
   root to: "users#dashboard"
 
-  resources :leave_applications, only: [:create]
+  resources :leave_applications, only: [:create, :index]
   get '/leave_applications/approval' => 'leave_applications#approval'
 end

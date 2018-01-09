@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if current_user.role == 'admin'
 
       # change this query method 
-      leave_approval = User.where(title: current_user.title)
+      leave_approval = User.where(HOD_email: current_user.email)
       leave_approval.each do |f|
         @unapproved_leave = []
         f.leave_applications.each do |list|

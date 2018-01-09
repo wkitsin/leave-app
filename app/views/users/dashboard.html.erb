@@ -1,4 +1,8 @@
+<%= "Hello #{current_user.email} ! You have #{current_user.balace} of leave days remaining" %>
 <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+<br>
+<%= link_to 'View all leave days', leave_applications_path %>
+
 <%= form_for @leave do |f| %>
   <p style='font-style: italic; font-weight: bold;'>Leave date </p>
   <%=  f.date_field :leave_date, class: 'checkin', min: Date.today %>
@@ -9,7 +13,7 @@
 
 <br> 
 
-<% if @unapproved_leave.length != 0 %>
+<% if current_user.role == 'admin' and @unapproved_leave.length != 0  %>
   <table style="width:100%">
     <tr>
       <th>Employee's Email</th>
@@ -20,10 +24,10 @@
     </tr>
     <% @unapproved_leave.each do |f| %>
       <tr>
-      <td> <%= f.user.email %> </td>
-      <td> <%= f.leave_date.to_date %> </td>
-      <td> <%= f.user.balace %> </td>
-      <td> <%= f.category %> </td>
+        <td> <%= f.user.email %> </td>
+        <td> <%= f.leave_date.to_date %> </td>
+        <td> <%= f.user.balace %> </td>
+        <td> <%= f.category %> </td>
       <td>
        <%= button_to 'Approve', leave_applications_approval_path, params: { 'approval' => 'approve', 'leave_id' => f.id}, method: :get %> <%= button_to 'Decline', leave_applications_approval_path, params: { 'approval' => 'decline', 'leave_id' => f.id}, method: :get %> 
       </td>

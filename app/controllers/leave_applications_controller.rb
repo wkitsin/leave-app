@@ -3,15 +3,26 @@ class LeaveApplicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :leave_calculation, only: [:create]
 
+  def index 
+    @leave = current_user.leave_applications  
+    @employee_leave =  User.where(title: current_user.title)
+    @array = []
+    @employee_leave.each do |f|
+      if f.leave_applications.length != 0 
+        @array << f.leave_applications
+      end 
+    end 
+  end 
+
   def create 
-    leave = LeaveApplication.new(leave_params)
-    leave.user_id = current_user.id 
+    leave = current_user.leave_applications.new(leave_params)
 
     if leave.save 
-      flash[:notice] = 'The date of leave has been submitted for approval'
+      flash[:notice] = "The date of leave has been submitted to #{current_user.HOD_email} for approval"
       redirect_to root_path 
     else 
-      flash[:notice] = 'The date of leave was not saved'
+      error = leave.errors.messages[:leave_date][0]
+      flash[:notice] = "The leave date was not save because the date #{error}"
       redirect_to root_path
     end 
   end 
@@ -28,11 +39,12 @@ class LeaveApplicationsController < ApplicationController
         end 
         flash[:notice] = "#{employee.email} #{leave_day.category} was granted, and the balance annual leave is #{employee.balace}"
       else 
-        leave_day.delete
         flash[:notice] = "#{employee.email} #{leave_day.category} was not granted, and the balance annual leave is #{employee.balace}"
       end 
      redirect_to root_path
   end 
+
+
 
   private 
 

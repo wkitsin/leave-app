@@ -11,7 +11,7 @@
     <% @leave.each do |f| %>
       <tr>
         <td> <%= f.user.email %> </td>
-        <td> <%= f.leave_date.to_date %> </td>
+        <td> <%= f.leave_date %> </td>
         <td> <%= f.category %> </td>
         <td> <%= f.approved %> </td>
       </tr>
@@ -33,7 +33,7 @@
     <% @array[0].each do |f| %>
       <tr>
         <td> <%= f.user.email %> </td>
-        <td> <%= f.leave_date.to_date %> </td>
+        <td> <%= f.leave_date %> </td>
         <td> <%= f.category %> </td>
         <td> <%= f.approved %> </td>
       </tr>

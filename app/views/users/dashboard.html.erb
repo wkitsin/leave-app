@@ -5,7 +5,8 @@
 
 <%= form_for @leave do |f| %>
   <p style='font-style: italic; font-weight: bold;'>Leave date </p>
-  <%=  f.date_field :leave_date, class: 'checkin', min: Date.today %>
+  <%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%>
+
  <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
   <br> 
   <%= f.submit 'Submit' %>
@@ -25,7 +26,7 @@
     <% @unapproved_leave.each do |f| %>
       <tr>
         <td> <%= f.user.email %> </td>
-        <td> <%= f.leave_date.to_date %> </td>
+        <td> <%= f.leave_date %> </td>
         <td> <%= f.user.balace %> </td>
         <td> <%= f.category %> </td>
       <td>

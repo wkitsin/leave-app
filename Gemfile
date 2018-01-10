@@ -60,6 +60,3 @@ gem 'devise'
 # figaro gem 
 gem 'figaro'
 
-
-
-

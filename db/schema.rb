@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180109030240) do
   enable_extension "plpgsql"
 
   create_table "leave_applications", force: :cascade do |t|
-    t.datetime "leave_date"
+    t.string "leave_date"
     t.string "approved", default: "N/A"
     t.bigint "user_id"
     t.datetime "created_at", null: false

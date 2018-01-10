@@ -60,3 +60,5 @@ gem 'devise'
 # figaro gem 
 gem 'figaro'
 
+# bootstrap 
+gem 'bootstrap', '~> 4.0.0.beta3'

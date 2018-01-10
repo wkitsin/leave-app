@@ -1,7 +1,4 @@
 <%= "Hello #{current_user.email} ! You have #{current_user.balace} leave days remaining" %>
-<%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-<br>
-<%= link_to 'View all leave days', leave_applications_path %>
 
 <%= form_for @leave do |f| %>
   <p style='font-style: italic; font-weight: bold;'>Leave date </p>
@@ -9,7 +6,7 @@
 
  <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
   <br> 
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Submit' , class: 'btn btn-primary'%>
 <% end %>
 
 <br> 
@@ -36,3 +33,4 @@
     <% end %>
   </table>
 <% end %>
+

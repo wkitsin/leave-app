@@ -1,15 +1,18 @@
-<%= "Hello #{current_user.email} ! You have #{current_user.balace} leave days remaining" %>
+<div style="padding-top: 200px;">
+  <div style="display: flex; justify-content: center;">
+    <div>
+      <%= "Hello #{current_user.email} ! You have #{current_user.balace} leave days remaining" %>
 
-<%= form_for @leave do |f| %>
-  <p style='font-style: italic; font-weight: bold;'>Leave date </p>
-  <%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%>
+      <%= form_for @leave do |f| %>
+        <p style='font-style: italic; font-weight: bold;'>Leave date </p>
+        <%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%>
 
- <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
-  <br> 
-  <%= f.submit 'Submit' , class: 'btn btn-primary'%>
-<% end %>
+       <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
+        <br> 
+        <%= f.submit 'Submit' , class: 'btn btn-primary'%>
+      <% end %>
 
-<br> 
+      <br> 
 
 <% if current_user.role == 'admin' and @unapprove_leave.length != 0 %>
   <table style="width:100%">
@@ -33,4 +36,5 @@
     <% end %>
   </table>
 <% end %>
+
 

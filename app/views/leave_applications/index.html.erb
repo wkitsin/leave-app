@@ -1,25 +1,26 @@
-<% if @leave.length == 0 %>
-  <h3> You have not applied for any leave </h3>
-<% else %>
-  <table style="width:100%">
-    <tr>
-      <th>Employee's Email</th>
-      <th>Requested Leave Date</th>
-      <th>Category of Leave</th>
-      <th>Approval Status</th>
-    </tr>
-    <% @leave.each do |f| %>
+<div style="padding: 20px; ">
+  <% if @leave.length == 0 %>
+    <h3> You have not applied for any leave </h3>
+  <% else %>
+    <table style="width:100%">
       <tr>
-        <td> <%= f.user.email %> </td>
-        <td> <%= f.leave_date %> </td>
-        <td> <%= f.category %> </td>
-        <td> <%= f.approved %> </td>
+        <th>Employee's Email</th>
+        <th>Requested Leave Date</th>
+        <th>Category of Leave</th>
+        <th>Approval Status</th>
       </tr>
-    <% end %>
-  </table>
-<% end %>
+      <% @leave.each do |f| %>
+        <tr>
+          <td> <%= f.user.email %> </td>
+          <td> <%= f.leave_date %> </td>
+          <td> <%= f.category %> </td>
+          <td> <%= f.approved %> </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 
-<hr>
+  <hr>
 
 <% if current_user.role == 'admin' %>
   <h3> Employee's previous leave application </h3>
@@ -41,21 +42,22 @@
       <% end %>
     </table>
   <% end %>
-  <br>
-  <hr> 
 
-  <h3> Employee's remaining leave days </h3>
-  <table style="width:100%">
-    <tr>
-      <th>Employee's Email</th>
-      <th>Balance Leave Days</th>
-    </tr>
-    <% @HOD.each do |f| %>
+    <br>
+    <hr> 
+
+    <h3> Employee's remaining leave days </h3>
+    <table style="width:100%">
       <tr>
-        <td> <%= f.email %> </td>
-        <td> <%= f.balace %> </td>
+        <th>Employee's Email</th>
+        <th>Balance Leave Days</th>
       </tr>
-    <% end %>
-  </table>
-
-<% end %>
+      <% @HOD.each do |f| %>
+        <tr>
+          <td> <%= f.email %> </td>
+          <td> <%= f.balace %> </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

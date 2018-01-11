@@ -10,7 +10,8 @@ class LeaveApplicationsController < ApplicationController
   end 
 
   def create 
-    leave = current_user.leave_applications.new(leave_params)
+    rearranged_dates = leave_params[:leave_date].split(',').sort.join(',')
+    leave = current_user.leave_applications.new(category: leave_params[:category], leave_date: rearranged_dates)
     if leave.save 
       LeaveApplicationMailer.create_leave_email(current_user, leave).deliver_later
       flash[:notice] = "The date of leave has been submitted to #{current_user.hod_email} for approval"

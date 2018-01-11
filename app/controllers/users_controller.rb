@@ -4,16 +4,9 @@ class UsersController < ApplicationController
 
   def dashboard
     @leave = LeaveApplication.new 
-      # change this query method 
-    leave_approval = User.where(HOD_email: current_user.email)
-    leave_approval.each do |f|
-      @unapproved_leave = []
-      f.leave_applications.each do |list|
-        if list.approved == 'N/A' 
-          @unapproved_leave << list
-        end 
-      end
-    end 
+    leave_approval = User.where(hod_email: current_user.email)
+    @unapprove_leave = LeaveApplication.where(approved: 'N/A').includes(:user).where("
+      users.hod_email = ?" , "#{current_user.email}").references(:users)
   end 
 
 end

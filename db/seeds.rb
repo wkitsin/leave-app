@@ -18,7 +18,7 @@ csv.each do |row|
 	t.password_confirmation = '123123'
 	t.title = row['TITLE']
 	t.department = row['DEPARTMENT']
-	t.HOD_email = row['HOD_EMAIL']
+	t.hod_email = row['HOD_EMAIL']
   t.total_al = row['2018_TOTAL_AL']
   t.total_leave = row['2018_TOTAL_AL']
   t.balace = row['2018_TOTAL_AL']

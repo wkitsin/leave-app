@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180109030240) do
     t.string "role", default: "none"
     t.string "title"
     t.string "department"
-    t.string "HOD_email"
+    t.string "hod_email"
     t.integer "total_al", default: 0
     t.integer "bring_forward", default: 0
     t.integer "replacement_leave", default: 0

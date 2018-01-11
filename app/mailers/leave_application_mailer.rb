@@ -9,7 +9,7 @@ class LeaveApplicationMailer < ApplicationMailer
   def create_leave_email(user, leave)
     @user = user 
     @leave = leave 
-    mail(to: @user.HOD_email, subject: "Application of Leave from #{@user.email} ")
+    mail(to: @user.hod_email, subject: "Application of Leave from #{@user.email} ")
   end 
 
 end

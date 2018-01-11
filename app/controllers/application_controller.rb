@@ -3,9 +3,8 @@ class ApplicationController < ActionController::Base
 
   def leave_calculation
     balance = current_user.balace 
-
     if balance == 0 
-      flash[:notce] = 'Your annual leave has #{balance} dayf left'
+      flash[:notice] = "The Annual Leave Application was not allowed because you do not have any remaining annual leave to spare"
       redirect_to root_path 
     end 
   end 

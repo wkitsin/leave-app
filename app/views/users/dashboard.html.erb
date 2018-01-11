@@ -11,7 +11,7 @@
 
 <br> 
 
-<% if current_user.role == 'admin' and @unapproved_leave.length != 0 %>
+<% if current_user.role == 'admin' and @unapprove_leave.length != 0 %>
   <table style="width:100%">
     <tr>
       <th>Employee's Email</th>
@@ -20,7 +20,7 @@
       <th>Category of Leave</th>
       <th>Approval</th>
     </tr>
-    <% @unapproved_leave.each do |f| %>
+    <% @unapprove_leave.each do |f| %>
       <tr>
         <td> <%= f.user.email %> </td>
         <td> <%= f.leave_date %> </td>

@@ -12,9 +12,8 @@
 
   <body>
     <%= render partial: "layouts/navbar" %>
-    <% if notice or alert %>
+    <% if notice %>
       <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
   </body>

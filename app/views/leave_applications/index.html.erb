@@ -30,7 +30,7 @@
       <th>Category of Leave</th>
       <th>Approval Status</th>
     </tr>
-    <% @array[0].each do |f| %>
+    <% @array.each do |f| %>
       <tr>
         <td> <%= f.user.email %> </td>
         <td> <%= f.leave_date %> </td>

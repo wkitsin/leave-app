@@ -23,23 +23,24 @@
 
 <% if current_user.role == 'admin' %>
   <h3> Employee's previous leave application </h3>
-  <table style="width:100%">
-    <tr>
-      <th>Employee's Email</th>
-      <th>Requested Leave Date</th>
-      <th>Category of Leave</th>
-      <th>Approval Status</th>
-    </tr>
-    <% @array.each do |f| %>
+  <% if @array.length != 0 %>
+    <table style="width:100%">
       <tr>
-        <td> <%= f.user.email %> </td>
-        <td> <%= f.leave_date %> </td>
-        <td> <%= f.category %> </td>
-        <td> <%= f.approved %> </td>
+        <th>Employee's Email</th>
+        <th>Requested Leave Date</th>
+        <th>Category of Leave</th>
+        <th>Approval Status</th>
       </tr>
-    <% end %>
-  </table>
-
+      <% @array.each do |f| %>
+        <tr>
+          <td> <%= f.user.email %> </td>
+          <td> <%= f.leave_date %> </td>
+          <td> <%= f.category %> </td>
+          <td> <%= f.approved %> </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
   <br>
   <hr> 
 

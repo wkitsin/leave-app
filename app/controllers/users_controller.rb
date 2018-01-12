@@ -9,6 +9,22 @@ class UsersController < ApplicationController
       users.hod_email = ?" , "#{current_user.email}").references(:users)
   end 
 
+  def new 
+    @user = User.new 
+  end 
+
+  def create 
+    user = User.new(update_params)
+    user.password = '123123'
+    user.password_confirmation = '123123'
+    if user.save 
+      flash[:notice] = "#{user.email} was successfully created and the default password is 123123"
+    else 
+      flash[:notice] = "The #{user.errors.full_messages[0]} while creating user #{user.email}"
+    end 
+    redirect_to root_path 
+  end 
+
   def index 
     @users = User.order(:id)
   end 

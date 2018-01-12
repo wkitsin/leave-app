@@ -10,6 +10,11 @@ class User < ApplicationRecord
   def calculate_leave 
     tot_leave = total_al + bring_forward + replacement_leave 
     balance = tot_leave - leave_taken
-    self.update_columns(total_leave: tot_leave, balace: balance)
+    if id == nil 
+      self.total_leave = tot_leave
+      self.balace = balance
+    else 
+      self.update_columns(total_leave: tot_leave, balace: balance)
+    end 
   end 
 end

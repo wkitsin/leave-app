@@ -18,8 +18,18 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Change my password" %>
+    <%= f.submit "Change my password" , class: 'change-ps-btn' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<style>
+  .change-ps-btn {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>

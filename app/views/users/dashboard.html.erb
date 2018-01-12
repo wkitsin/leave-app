@@ -1,6 +1,6 @@
-<div style="padding-top: 200px;">
+<div style="padding-top: 180px;">
   <div style="display: flex; justify-content: center;">
-    <div style="position: relative;">
+    <div style="position: relative; width: 45vw;">
       <div class="container">
         <h2><%= "Hello #{current_user.email} ! "%> <br> <%="You have #{current_user.balace} leave days remaining." %></h2>
         <br>
@@ -12,12 +12,15 @@
             <%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%>
 
              <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
-              <br>     
+              <br> 
+            <div> 
+              <div style="margin: 20px; position: absolute; right: 0; bottom: 0;">
+                <%= f.submit 'Submit' , class: 'btn btn-primary'%>
+              </div>
+            </div> 
           </div>
         </div>
-        <div style="margin-top: 20px; padding-right: 15px; position: absolute; right: 0;">
-          <%= f.submit 'Submit' , class: 'btn btn-primary'%>
-        </div>
+        
         <% end %>
         <br> 
         <% if current_user.role == 'admin' and @unapprove_leave.length != 0 %>
@@ -36,7 +39,7 @@
                 <td> <%= f.user.balace %> </td>
                 <td> <%= f.category %> </td>
               <td>
-               <%= button_to 'Approve', leave_applications_approval_path, params: { 'approval' => 'approve', 'leave_id' => f.id}, method: :get %> <%= button_to 'Decline', leave_applications_approval_path, params: { 'approval' => 'decline', 'leave_id' => f.id}, method: :get %> 
+               <%= button_to 'Approve', leave_applications_approval_path, params: { 'approval' => 'approve', 'leave_id' => f.id}, method: :get, class: 'approve-btn' %> <%= button_to 'Decline', leave_applications_approval_path, params: { 'approval' => 'decline', 'leave_id' => f.id}, method: :get, class: 'decline-btn' %> 
               </td>
               </tr>
             <% end %>
@@ -47,7 +50,29 @@
   </div>
 </div>
 <style>
+  th, td {
+    padding: 10px;
+  }
   .my_style_class {
     outline: none;
+  }
+  .button_to {
+    margin: 2px 0;
+  }
+  .approve-btn {
+    background-color: #71F732;
+    width: 100%;
+    border: none;
+  }
+  .approve-btn:hover {
+    background-color: #63A833;
+  }
+  .decline-btn {
+    background-color: #F62509;
+    width: 100%;
+    border: none;
+  }
+  .decline-btn:hover{
+    background-color: #B06758;
   }
 </style>

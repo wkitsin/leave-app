@@ -7,6 +7,11 @@
       <img class="imv-logo" src="http://imv.com.sg/wp-content/uploads/2017/10/IMV-logo-new.png" alt="imv logo"/>
     </li>
     <% if user_signed_in? %> 
+      <% if current_user.email == 'j.teh@imv.com.sg' %>
+        <li>
+          <%= link_to 'Show All Employees', users_path, class: 'nav-link' %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to 'View all leave days', leave_applications_path, class: "nav-link" %>
       </li>

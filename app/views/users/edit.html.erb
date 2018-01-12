@@ -1,0 +1,18 @@
+<%= form_for @user do |f| %>
+  <%= f.label :email, "email:"%>
+  <%= f.text_field :email %>
+  <br>
+  <%= f.label :title, "title:" %>
+  <%= f.text_field :title %> 
+  <br>
+  <%= f.label :total_al, "annual leave:" %>
+  <%= f.number_field :total_al %> 
+  <br>
+  <%= f.label :bring_forward, 'brought forward:'%>
+  <%= f.number_field :bring_forward %> g
+  <br>
+  <%= f.label :replacement_leave ,'replacement leave:'%>
+  <%= f.number_field :replacement_leave %> 
+  <br>
+  <%= f.submit 'Update' %>
+<% end %>

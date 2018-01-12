@@ -1,0 +1,26 @@
+<div style="padding: 20px; ">
+  <table style="width:100%">
+    <tr>
+      <th>Employee's Email</th>
+      <th>Title</th>
+      <th>Annual Leave</th>
+      <th>Brought Forward</th>
+      <th>Replacement</th>
+      <th>Total Leave</th>
+      <th>Leave Taken</th>
+      <th>Balace</th>
+    </tr>
+    <% @users.each do |f| %>
+      <tr>
+        <td> <%= link_to "#{f.email}", edit_user_path(f.id) %> </td>
+        <td> <%= f.title %> </td>
+        <td> <%= f.total_al %> </td>
+        <td> <%= f.bring_forward %> </td>
+        <td> <%= f.replacement_leave %> </td> 
+        <td> <%= f.total_leave %> </td>
+        <td> <%= f.leave_taken %> </td>
+        <td> <%= f.balace %> </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -9,4 +9,29 @@ class UsersController < ApplicationController
       users.hod_email = ?" , "#{current_user.email}").references(:users)
   end 
 
+  def index 
+    @users = User.order(:id)
+  end 
+
+  def edit 
+    @user = User.find(params[:id])
+  end 
+
+  def update 
+    user = User.find(params[:id])
+    user.update(update_params)
+    if user 
+      flash[:notice] = "#{user.email}'s details has been updated" 
+    else 
+      flash[:notice] = user.errors.messages
+    end 
+      redirect_to users_path
+  end 
+
+  private 
+
+  def update_params
+    params.require(:user).permit(:email, :title, :total_al, :replacement_leave, :bring_forward)
+  end 
+
 end

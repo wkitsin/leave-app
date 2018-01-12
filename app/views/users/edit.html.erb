@@ -1,18 +1,61 @@
-<%= form_for @user do |f| %>
-  <%= f.label :email, "email:"%>
-  <%= f.text_field :email %>
-  <br>
-  <%= f.label :title, "title:" %>
-  <%= f.text_field :title %> 
-  <br>
-  <%= f.label :total_al, "annual leave:" %>
-  <%= f.number_field :total_al %> 
-  <br>
-  <%= f.label :bring_forward, 'brought forward:'%>
-  <%= f.number_field :bring_forward %> g
-  <br>
-  <%= f.label :replacement_leave ,'replacement leave:'%>
-  <%= f.number_field :replacement_leave %> 
-  <br>
-  <%= f.submit 'Update' %>
-<% end %>
+<div style="padding-top: 180px;">
+  <div style="display: flex; justify-content: center;">
+    <div style="position: relative; width: 45vw;">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Edit employee's leave days</h4><br>
+              <%= form_for @user do |f| %>
+              <table>
+                <tr>
+                <td><%= f.label :email, "Email:"%></td>
+                <td><%= f.text_field :email , class: 'edit-employee' %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :title, "Title:" %></td>
+                <td><%= f.text_field :title , class: 'edit-employee' %> </td>
+              </tr>
+              <tr>
+                <td><%= f.label :total_al, "Annual Leave:" %></td>
+                <td><%= f.number_field :total_al , class: 'edit-employee' %> </td>
+              </tr>
+              <tr>
+                <td><%= f.label :bring_forward, 'Brought Forward:'%></td>
+                <td><%= f.number_field :bring_forward , class: 'edit-employee' %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :replacement_leave ,'Replacement Leave:'%></td>
+                <td><%= f.number_field :replacement_leave , class: 'edit-employee' %></td>
+              </tr>
+              </table>
+              <br>
+              <%= f.submit 'Update' , class: 'update-btn' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+table, tr, th, td {
+  border: none;
+}
+  .update-btn {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .update-btn:hover {
+    background-color: #3386CA;
+    border-color: #3386CA;
+  }
+  .edit-employee {
+    outline-width: 1px;
+    outline-color: dimgrey;
+  }
+</style>

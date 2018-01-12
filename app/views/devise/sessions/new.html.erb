@@ -22,7 +22,7 @@
       <br>
 
       <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.submit "Log in" , class: 'login-btn' %>
       </div>
     <% end %>
 
@@ -35,5 +35,12 @@
     width: 100%;
     outline-width: 1px;
     outline-color: dimgrey;
+  }
+  .login-btn {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
   }
 </style>

@@ -16,12 +16,10 @@
           <td> <%= f.leave_date %> </td>
           <td> <%= f.category %> </td>
           <td> 
-            <% if f.approved == 'false'%>
-              Not Approved 
-            <% elsif f.approved == 'true' %>
-              Approved :) 
+            <% if f.approved == 'N/A' %>
+              Waiting for Approval 
             <% else %>
-              Waiting For Approval 
+              <%= f.approved %>
             <% end %>
            </td>
         </tr>
@@ -47,12 +45,10 @@
           <td> <%= f.leave_date %> </td>
           <td> <%= f.category %> </td>
           <td>
-            <% if f.approved == 'false'%>
-              Not Approved 
-            <% elsif f.approved == 'true' %>
-              Approved :) 
+           <% if f.approved == 'N/A' %>
+              Waiting for Approval 
             <% else %>
-              Waiting For Approval 
+              <%= f.approved %>
             <% end %>
           </td>
         </tr>

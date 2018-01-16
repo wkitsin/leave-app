@@ -17,12 +17,10 @@
      Head of Department: <%= @user.hod_email %>
      <br>
      <h4 style='font-weight: bold;'>Approval: 
-      <% if @leave.approved == 'false'%>
-        Not Approved 
-      <% elsif @leave.approved == 'true' %>
-        Approved :) 
+      <% if @leave.approved == 'N/A' %>
+        Waiting for Approval 
       <% else %>
-        Waiting For Approval 
+        <%= @leave.approved %>
       <% end %>
     </h4>
     </p>

@@ -24,17 +24,13 @@ class LeaveApplicationsController < ApplicationController
 
   def approval
     leave_day = LeaveApplication.find(params[:leave_id])
-    total_days = leave_day.leave_date.count(',') + 1 
     employee = leave_day.user
     if params['approval'] == 'approve'
-      leave_day.update(approved: 'true')
-      if leave_day.category == 'Annual Leave'
-        leave_taken = employee.leave_taken.to_i + total_days
-        employee.update(leave_taken: leave_taken)
-      end 
+      leave_day.update(approved: 'Approved :)')
+      half_or_full_day(leave_day, employee)
       flash[:notice] = "#{employee.email} #{leave_day.category} was granted, and the balance annual leave is #{employee.balace}"
     else 
-      leave_day.update(approved: 'false')
+      leave_day.update(approved: 'Not Approved')
       flash[:notice] = "#{employee.email} #{leave_day.category} was not granted, and the balance annual leave is #{employee.balace}"
     end 
     LeaveApplicationMailer.leave_email(employee, leave_day).deliver_later

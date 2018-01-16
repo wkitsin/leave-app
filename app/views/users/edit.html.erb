@@ -17,15 +17,15 @@
               </tr>
               <tr>
                 <td><%= f.label :total_al, "Annual Leave:" %></td>
-                <td><%= f.number_field :total_al , class: 'edit-employee' %> </td>
+                <td><%= f.number_field :total_al , min: 0, step: 0.5, class: 'edit-employee' %> </td>
               </tr>
               <tr>
                 <td><%= f.label :bring_forward, 'Brought Forward:'%></td>
-                <td><%= f.number_field :bring_forward , class: 'edit-employee' %></td>
+                <td><%= f.number_field :bring_forward ,  min: 0, step: 0.5, class: 'edit-employee' %></td>
               </tr>
               <tr>
                 <td><%= f.label :replacement_leave ,'Replacement Leave:'%></td>
-                <td><%= f.number_field :replacement_leave , class: 'edit-employee' %></td>
+                <td><%= f.number_field :replacement_leave , min: 0, step: 0.5, class: 'edit-employee' %></td>
               </tr>
               </table>
               <br>

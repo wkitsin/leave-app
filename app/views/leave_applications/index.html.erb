@@ -15,7 +15,15 @@
           <td> <%= f.user.email %> </td>
           <td> <%= f.leave_date %> </td>
           <td> <%= f.category %> </td>
-          <td> <%= f.approved %> </td>
+          <td> 
+            <% if f.approved == 'false'%>
+              Not Approved 
+            <% elsif f.approved == 'true' %>
+              Approved :) 
+            <% else %>
+              Waiting For Approval 
+            <% end %>
+           </td>
         </tr>
       <% end %>
     </table>
@@ -38,7 +46,15 @@
           <td> <%= f.user.email %> </td>
           <td> <%= f.leave_date %> </td>
           <td> <%= f.category %> </td>
-          <td> <%= f.approved %> </td>
+          <td>
+            <% if f.approved == 'false'%>
+              Not Approved 
+            <% elsif f.approved == 'true' %>
+              Approved :) 
+            <% else %>
+              Waiting For Approval 
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>

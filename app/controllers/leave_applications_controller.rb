@@ -5,7 +5,7 @@ class LeaveApplicationsController < ApplicationController
 
   def index 
     @leave = current_user.leave_applications 
-    @array = LeaveApplication.includes(:user).where('users.title = ?', "#{current_user.title}").references(:users)
+    @array = LeaveApplication.includes(:user).where('users.hod_email = ?', "#{current_user.email}").references(:users)
     @HOD = User.where(hod_email: current_user.email)
   end 
 

@@ -1,81 +1,124 @@
-<div style="padding: 20px; ">
-  <% if @leave.length == 0 %>
-    <h3> You have not applied for any leave </h3>
-  <% else %>
-  <h3> Your Applied Leave</h3>
-    <table style="width:100%">
-      <tr>
-        <th>Employee's Email</th>
-        <th>Requested Leave Date</th>
-        <th>Category of Leave</th>
-        <th>Approval Status</th>
-      </tr>
-      <% @leave.each do |f| %>
+<div class="leave-page">
+  <div class="border-image-container"><%= image_tag("border-image.png", :class => "border-image") %></div>
+  <div class="leave-container">
+    <% if @leave.length == 0 %>
+      <h3> You have not applied for any leave </h3>
+    <% else %>
+      <input class='calender-size' type="hidden" value=<%= @leave_id %>>
+      <h1> <%= current_user.department %> </h1>
+      <br>
+      <h4> Your Applied Leave</h4>
+      <table>
         <tr>
-          <td> <%= f.user.email %> </td>
-          <td> <%= f.leave_date %> </td>
-          <td> <%= f.category %> </td>
-          <td> 
-            <% if f.approved == 'N/A' %>
-              Waiting for Approval 
-            <% else %>
-              <%= f.approved %>
-            <% end %>
-           </td>
+          <th class="applied-th-1"></th>
+          <th class="applied-th-2">Email</th>
+          <th class="applied-th-3">Requested Date</th>
+          <th class="applied-th-1">Total Days</th>
+          <th class="applied-th-4">Category</th>
+          <th class="applied-th 5">Reason</th>
+          <th class="applied-th-6">Approval</th>
         </tr>
+        <% @leave.each do |f| %>
+        <tr>
+          <td>
+            <div class="dropdown">
+              <% if f.leave_date.split(',')[0].to_datetime > Time.now %>
+                <button class="dropbtn">OPTIONS</button>
+                <div class="dropdown-content">
+                  <p><%= link_to 'Delete', leave_application_path(f.id), class: 'edit-links', method: :delete %></p>
+                  <p><%= link_to 'Edit', edit_leave_application_path(f.id), class: 'edit-links' %></p>
+                </div>
+              <% end %>
+            </div>
+          </td>
+          <td> <%= f.user.email %> </td>
+          <td>
+            <%= f.leave_date %>
+          </td>
+          <td><%= f.leave_date.count(',') %></td>
+          <td> <%= f.category %> </td>
+          <td> <%= f.description %> </td>
+          <td class="approval-col">
+            <% if f.approved == 'N/A' %>
+              <div class="pending">
+                <span>Pending</span>
+              </div>
+            <% elsif f.approved == 'Approved :)' %>
+              <div class="approved">
+                <span>Approved :)</span>
+              </div>
+            <% else %>
+              <div class="not-approved">
+                <span>Not Approved</span>
+              </div>
+            <% end %>
+        </tr>
+        <% @count = @count + 1 %>
       <% end %>
     </table>
   <% end %>
 
   <hr>
 
-<% if current_user.role == 'admin' %>
-  <h3> Employee's previous leave application </h3>
-  <% if @array.length != 0 %>
-    <table style="width:100%">
-      <tr>
-        <th>Employee's Email</th>
-        <th>Requested Leave Date</th>
-        <th>Category of Leave</th>
-        <th>Approval Status</th>
-      </tr>
-      <% @array.each do |f| %>
-        <tr>
-          <td> <%= f.user.email %> </td>
-          <td> <%= f.leave_date %> </td>
-          <td> <%= f.category %> </td>
-          <td>
-           <% if f.approved == 'N/A' %>
-              Waiting for Approval 
-            <% else %>
-              <%= f.approved %>
-            <% end %>
-          </td>
+  <% if current_user.role == 'admin' %>
+    <h4> Employee's previous leave application </h4>
+    <% if @array.length != 0 %>
+      <table>
+        <tr >
+          <th class="applied-th-2">Email</th>
+          <th class="applied-th-3">Requested Date</th>
+          <th class="applied-th-1">Total Days</th>
+          <th class="applied-th-4">Category</th>
+          <th style="applied-th-7">Reason</th>
+          <th class="applied-th-6">Approval</th>
         </tr>
-      <% end %>
-    </table>
-  <% end %>
+        <% @array.each do |f| %>
+          <tr>
+            <td> <%= f.user.email %> </td>
+            <td>
+              <%= f.leave_date %>
+            </td>
+            <td><%= f.leave_date.count(',') %></td>
+            <td> <%= f.category %> </td>
+            <td> <%= f.description %> </td>
+            <td class="approval-col">
+              <% if f.approved == 'N/A' %>
+                <div class="pending">
+                  <span>Pending</span>
+                </div>
+              <% elsif f.approved == 'Approved :)' %>
+                <div class="approved">
+                  <span>Approved :)</span>
+                </div>
+              <% else %>
+                <div class="not-approved">
+                  <span>Not Approved</span>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+          <% @count = @count + 1 %>
+        <% end %>
+      </table>
+    <% end %>
 
     <br>
-    <hr> 
+    <hr>
 
-    <h3> Employee's remaining leave days </h3>
-    <table style="width:100%">
-      <tr>
-        <th>Employee's Email</th>
-        <th>Balance Leave Days</th>
-      </tr>
-      <% @HOD.each do |f| %>
+      <h4> Remaining leave days </h4>
+      <table class="remaining-days-table">
         <tr>
-          <td> <%= f.email %> </td>
-          <td> <%= f.balace %> </td>
+          <th>Email</th>
+          <th>Balance Leave Days</th>
         </tr>
-      <% end %>
-    </table>
-  <% end %>
+        <% @HOD.each do |f| %>
+          <tr>
+            <td> <%= f.email %> </td>
+            <td> <%= f.balace %> </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+<div class="border-image-container-2"><%= image_tag("border-image.png", :class => "border-image") %></div>
 </div>
-<style>
-  th, td {
-    padding: 0 10px;
-  }
-</style>

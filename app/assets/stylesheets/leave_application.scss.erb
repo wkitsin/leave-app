@@ -1,0 +1,200 @@
+$navy-blue: #052354;
+$beige: #fcefd4;
+$dark-beige: #f9e4b6;
+$darker-beige: #f9da95;
+$light-blue: #84e2f9;
+$light-grey: #e5e4e3;
+$light-yellow: #fcfbcf;
+
+.applied-th-1 {
+  width: 10%;
+}
+
+.applied-th-2 {
+  width: 15%;
+}
+
+.applied-th-3 {
+  width: 15%;
+}
+
+.applied-th-4 {
+  width: 17%;
+}
+
+.applied-th-5 {
+  width: 33%;
+}
+
+.applied-th-6 {
+  width: 10%;
+}
+
+.applied-th-7 {
+  width: 43%;
+}
+
+.leave-page {
+  background-color: white;
+  width: 98.9vw;
+  height: flex;
+  margin: 0 auto;
+  padding: 3vh 0;
+  font-family: 'Dosis', sans-serif;
+}
+
+.leave-container {
+  background-color: $beige;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 5vh 2vw;
+  border: solid rgba(0, 0, 0, 0.6);
+}
+
+.border-image-container {
+  width: 40vw;
+  height: 10vh;
+  margin: 0 auto;
+}
+
+.border-image-container-2 {
+  width: 40vw;
+  height: 10vh;
+  margin: 0 auto;
+  transform: rotate(180deg);
+}
+
+.border-image {
+  width: 100%;
+  height: 100%;
+  background-image: url(<%= asset_path 'border-image.png' %>);
+  background-size: contain;
+  background-position: center;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+
+.logo-1-container {
+  position: absolute;
+  top: 20vh;
+  left: 0;
+  height: 7vh;
+  width: 10vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 1vw;
+}
+
+.logo-2-container {
+  position: absolute;
+  top: 20vh;
+  right: 0;
+  height: 15vh;
+  width: 10vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1vw;
+}
+
+.logo-1 {
+  height: 100%;
+  width: 100%;
+}
+
+.logo-2 {
+  height: 100%;
+  width: 100%;
+}
+
+.pending {
+  background-color: orange;
+  color: white;
+  border-radius: 0.5rem;
+  width: 90%;
+}
+
+.approved {
+  background-color: green;
+  color: white;
+  border-radius: 0.5rem;
+  width: 90%;
+}
+
+.not-approved {
+  background-color: red;
+  color: white;
+  border-radius: 0.5rem;
+  width: 90%;
+}
+
+.dropdown {
+  position: relative;
+  outline: none;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: grey;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  width: 80%;
+}
+
+.dropdown-content {
+  margin-left: 25px;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 4vw;
+  z-index: 1;
+  border-top: 1px solid grey;
+}
+
+.dropdown-content edit-links {
+  color: black;
+  font-size: 0.8rem;
+  padding: 10px 6px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content edit-links:hover {
+  color: #007bff;
+}
+
+.approval-col {
+  max-width: 10%;
+}
+
+.remaining-days-table {
+  width: 50%;
+}
+
+.update-btn {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  background-color: #3386CA;
+  border-color: #3386CA;
+}
+
+.edit-employee {
+  outline-width: 1px;
+  outline-color: dimgrey;
+}

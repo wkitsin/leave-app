@@ -1,4 +1,4 @@
-<div style="padding-top: 180px;">
+<div style="padding-top: 100px;">
   <div style="display: flex; justify-content: center;">
     <div style="position: relative; width: 45vw;">
       <div class="container">
@@ -31,31 +31,10 @@
               <br>
               <%= f.submit 'Update' , class: 'update-btn' %>
             <% end %>
+            <%= button_to 'Delete', user_path(@user.id), class: 'btn btn-danger' , method: :delete %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<style>
-table, tr, th, td {
-  border: none;
-}
-  .update-btn {
-    color: white;
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .update-btn:hover {
-    background-color: #3386CA;
-    border-color: #3386CA;
-  }
-  .edit-employee {
-    outline-width: 1px;
-    outline-color: dimgrey;
-  }
-</style>

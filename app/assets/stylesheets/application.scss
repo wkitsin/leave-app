@@ -1,6 +1,42 @@
 @import "bootstrap";
+@import "leave_application";
+@import "layouts";
+@import "users";
 
-table, th, td {
- border: 1px solid black;
- border-collapse: collapse;
+table {
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0px 0.5rem;
+  font-family: 'Dosis', sans-serif;
+  width: 100%;
+}
+
+td {
+  padding: 5px 0;
+}
+
+tr:nth-child(odd) {
+  background-color: $darker-beige;
+ }
+
+tr:nth-child(even) {
+  background-color: $dark-beige;
+}
+
+tr{
+  border-radius: 0.5rem;
+}
+
+tr:hover {
+  background-color: $light-grey;
+}
+
+.notice {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 5vh;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  background-color: lightgreen;
 }

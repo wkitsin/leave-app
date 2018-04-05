@@ -1,78 +1,65 @@
-<div style="padding-top: 180px;">
-  <div style="display: flex; justify-content: center;">
-    <div style="position: relative; width: 45vw;">
-      <div class="container">
-        <h2><%= "Hello #{current_user.email} ! "%> <br> <%="You have #{current_user.balace} leave days remaining." %></h2>
-        <br>
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title"><%= form_for @leave do |f| %>
-              <p style='font-style: italic; font-weight: bold;'>Leave request </p>
-            </h4>
-            <%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%>
-
-             <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Half Day Leave (AM)', 'Half Day Leave (PM)', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
-              <br> 
-            <div> 
-              <div style="margin: 20px; float: right;">
-                <%= f.submit 'Submit' , class: 'btn btn-primary'%>
-              </div>
-            </div> 
+<div>
+  <div class="request-container">
+    <h2><%= "Hello #{current_user.email} ! "%> <br> <%="You have #{current_user.balace} leave days remaining." %></h2>
+    <br>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <p style='font-style: italic; font-weight: bold;'>Leave request </p>
+        </h4>
+        <%= form_for @leave do |f| %>
+          <%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%>
+          <%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Half Day Leave (AM)',
+                'Half Day Leave (PM)', 'Marriage Leave', 'Sick Leave', 'Hospitalization Leave',
+                'Maternity Leave', 'Compassionate Leave'], {}, { :class => 'my_style_class' }) %>
+          <br>
+          <br>
+          <%= f.label :description %>
+          <br>
+          <%= f.text_area :description, rows: 5, cols: 50, class: "reason-text-field", placeholder: " The cake is a lie. " %>
+          <br>
+          <div>
+            <div style=" float: left;">
+              <%= f.submit 'Submit', class: 'btn btn-primary'%>
+            </div>
           </div>
-        </div>
-        
-        <% end %>
-        <br> 
-        <% if current_user.role == 'admin' and @unapprove_leave.length != 0 %>
-          <table style="width:100%">
-            <tr>
-              <th>Employee's Email</th>
-              <th>Requested Leave Date</th>
-              <th>Balance Leave Days</th>
-              <th>Category of Leave</th>
-              <th>Approval</th>
-            </tr>
-            <% @unapprove_leave.each do |f| %>
-              <tr>
-                <td> <%= f.user.email %> </td>
-                <td> <%= f.leave_date %> </td>
-                <td> <%= f.user.balace %> </td>
-                <td> <%= f.category %> </td>
-              <td>
-               <%= button_to 'Approve', leave_applications_approval_path, params: { 'approval' => 'approve', 'leave_id' => f.id}, method: :get, class: 'approve-btn' %> <%= button_to 'Decline', leave_applications_approval_path, params: { 'approval' => 'decline', 'leave_id' => f.id}, method: :get, class: 'decline-btn' %> 
-              </td>
-              </tr>
-            <% end %>
-          </table>
         <% end %>
       </div>
     </div>
+    <br>
+    <% if current_user.role == 'admin' and @unapprove_leave.length != 0 %>
+      <input class='calender-size' type="hidden" value=<%= @leave_id %>>
+      <h4> Pending Leave Applications </h4>
+      <table>
+        <tr>
+          <th>Employee's Email</th>
+          <th>Dates</th>
+          <th>Total Days</th>
+          <th>Balance Leave Days</th>
+          <th>Category of Leave</th>
+          <th>Approval</th>
+        </tr>
+        <% @count = 1 %>
+        <% @unapprove_leave.each do |f| %>
+        <tr>
+          <td> <%= f.user.email %> </td>
+          <td>
+            <p style="font-size: 12px; font-style:italic; width: 200px;"> Click Below to View Dates &#128467
+               <input class="flatpickr-<%= @count %> flatpickr-input active"
+               type="text" placeholder="View Dates" readonly="readonly" style="font-size: 12px; font-style:italic;"></input></p>
+            <input type="hidden" value="<%= f.leave_date %>" id=<%= @count %>>
+          </td>
+          <td> <%= f.leave_date.split(',').count %> </td>
+          <td> <%= f.user.balace %> </td>
+          <td> <%= f.category %> </td>
+          <td>
+            <%= button_to 'Approve', leave_applications_approval_path, params: { 'approval' => 'approve', 'leave_id' => f.id}, method: :get, class: 'approve-btn' %>
+            <%= button_to 'Decline', leave_applications_approval_path, params: { 'approval' => 'decline', 'leave_id' => f.id}, method: :get, class: 'decline-btn' %>
+          </td>
+        </tr>
+        <% @count = @count + 1 %>
+        <% end %>
+      </table>
+    <% end %>
   </div>
 </div>
-<style>
-  th, td {
-    padding: 10px;
-  }
-  .my_style_class {
-    outline: none;
-  }
-  .button_to {
-    margin: 2px 0;
-  }
-  .approve-btn {
-    background-color: #71F732;
-    width: 100%;
-    border: none;
-  }
-  .approve-btn:hover {
-    background-color: #63A833;
-  }
-  .decline-btn {
-    background-color: #F62509;
-    width: 100%;
-    border: none;
-  }
-  .decline-btn:hover{
-    background-color: #B06758;
-  }
-</style>

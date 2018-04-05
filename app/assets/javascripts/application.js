@@ -19,3 +19,14 @@
 //= require_tree .
 
 
+$(document).on('turbolinks:load', function(){
+
+  var count = $('.calender-size').val();
+  for (i = 0; i < count; i++) {
+    var leave_dates = $('#'+ (i+1)).val().split(',');
+    const EndDate = flatpickr('.flatpickr-'+(i+1),{
+        mode: "multiple",
+        defaultDate: leave_dates
+      });
+    }
+ });

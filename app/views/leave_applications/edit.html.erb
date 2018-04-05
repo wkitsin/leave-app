@@ -1,0 +1,25 @@
+<div style="padding-top: 100px;">
+  <div style="display: flex; justify-content: center;">
+    <div style="position: relative; width: 45vw;">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Edit employee's leave days</h4><br>
+              <%= form_for @leave do |f| %>
+              <table>
+                <tr>
+                  <td><%= f.text_field :leave_date , placeholder: "Select Date..", readonly: "readonly", class: "flatpickr flatpickr-input active"%></td>
+                  <td><%= f.select(:category, ['Annual Leave', 'Unpaid Leave', 'Half Day Leave (AM)', 'Half Day Leave (PM)',
+                    'Marriage Leave', 'Sick Leave', 'Hospitalization Leave', 'Maternity Leave',
+                    'Compassionate Leave'], {}, { :class => 'my_style_class' }) %></td>
+                 <tr>
+              </table>
+              <br>
+              <%= f.submit 'Update' , class: 'update-btn' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

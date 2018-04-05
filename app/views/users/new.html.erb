@@ -1,4 +1,4 @@
-<div style="padding-top: 180px;">
+<div style="padding-top: 100px;">
   <div style="display: flex; justify-content: center;">
     <div style="position: relative; width: 45vw;">
       <div class="container">
@@ -17,15 +17,15 @@
                 </tr>
                 <tr>
                   <td><%= f.label :total_al, "Annual Leave:" %></td>
-                  <td><%= f.number_field :total_al , class: 'create-employee' %> </td>
+                  <td><%= f.number_field :total_al , step: '.5', class: 'create-employee' %> </td>
                 </tr>
                 <tr>
                   <td><%= f.label :bring_forward, 'Brought Forward:'%></td>
-                  <td><%= f.number_field :bring_forward , class: 'create-employee' %></td>
+                  <td><%= f.number_field :bring_forward , step: '.5', class: 'create-employee' %></td>
                 </tr>
                 <tr>
                   <td><%= f.label :replacement_leave ,'Replacement Leave:'%></td>
-                  <td><%= f.number_field :replacement_leave , class: 'create-employee' %> </td>
+                  <td><%= f.number_field :replacement_leave , step: '.5', class: 'create-employee' %> </td>
                 </tr>
               </table>
             <br>
@@ -37,24 +37,3 @@
     </div>
   </div>
 </div>
-
-<style>
-table, tr, th, td {
-  border: none;
-}
-  .create-btn {
-    color: white;
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .create-btn:hover {
-    background-color: #3386CA;
-    border-color: #3386CA;
-  }
-  .create-employee {
-    outline-width: 1px;
-    outline-color: dimgrey;
-  }
-</style>

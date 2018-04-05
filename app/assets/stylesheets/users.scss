@@ -1,3 +1,69 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.my_style_class {
+  outline: none;
+}
+
+.button_to {
+  margin: 2px 0;
+}
+
+.approve-btn {
+  background-color: green;
+  width: 90%;
+  border: none;
+  margin: 10px 0;
+  border-radius: 0.5rem;
+}
+
+.approve-btn:hover {
+  background-color: #63A833;
+}
+
+.decline-btn {
+  background-color: #F62509;
+  width: 90%;
+  border: none;
+  margin: 0 0 10px 0;
+  border-radius: 0.5rem;
+}
+
+.decline-btn:hover{
+  background-color: #B06758;
+}
+
+.request-container {
+  width: 80vw;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 5vh;
+  font-family: 'Dosis', sans-serif;
+}
+
+.create-btn {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background-color: #3386CA;
+  border-color: #3386CA;
+}
+
+.create-employee {
+  outline-width: 1px;
+  outline-color: dimgrey;
+}
+
+.reason-text-field {
+  background-color: $light-yellow;
+}
+
+.card {
+  background-color: $beige;
+}

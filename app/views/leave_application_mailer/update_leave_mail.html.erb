@@ -4,18 +4,21 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4><%= @user.email %> would like to apply for leave for the following day(s):</h4>
+    <h4><%= @user.email %> would like to make changes for the applied leave dates(s):</h4>
     <p>
      <br>
-     Leave Date: <%= @leave.leave_date %>
+     Original Leave Date: <%= @previous_date[0] %>
+     <br>
+     Original Leave Category: <%= @previous_date[1] %>
+     <br>
+     <hr>
+     Edited Leave Date: <%= @leave.leave_date %>
      <br>
      Type of Leave: <%= @leave.category %>
      <br>
      Remaining Leave Days: <%= @user.balace %>
      <br>
      Head of Department: <%= @user.hod_email %>
-     <br>
-     Reason for applying : <%= @leave.description %>
      <br>
      Respond to the leave application at leave.imvbackend.com
     </p>

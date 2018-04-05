@@ -35,7 +35,7 @@
           <td>
             <%= f.leave_date %>
           </td>
-          <td><%= f.leave_date.count(',') %></td>
+          <td><%= f.leave_date.count(',') + 1 %></td>
           <td> <%= f.category %> </td>
           <td> <%= f.description %> </td>
           <td class="approval-col">
@@ -78,7 +78,7 @@
             <td>
               <%= f.leave_date %>
             </td>
-            <td><%= f.leave_date.count(',') %></td>
+            <td><%= f.leave_date.count(',') + 1%></td>
             <td> <%= f.category %> </td>
             <td> <%= f.description %> </td>
             <td class="approval-col">

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
 
   def leave_calculation
     balance = current_user.balace

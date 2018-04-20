@@ -27,6 +27,14 @@
                   <td><%= f.label :replacement_leave ,'Replacement Leave:'%></td>
                   <td><%= f.number_field :replacement_leave , step: '.5', class: 'create-employee' %> </td>
                 </tr>
+                <tr>
+                  <td><%= f.label :hod_email ,'HOD_email:'%></td>
+                  <td><%= f.text_field :hod_email, class: 'create-employee' %> </td>
+                </tr>
+                <tr>
+                  <td><%= f.label :department ,'Department:'%></td>
+                  <td><%= f.text_field :department, placeholder: 'Example: marketing',class: 'create-employee' %> </td>
+                </tr>
               </table>
             <br>
             <%= f.submit 'Create' , class: 'create-btn' %>

@@ -8,17 +8,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def half_or_full_day(leave_day, employee)
-    total_days = leave_day.leave_date.count(',')
-	  if leave_day.category == 'Annual Leave'
-	    total_days = total_days + 1
-	  elsif leave_day.category[0..3] == 'Half'
-      total_days = total_days + 0.5
-    end
-    leave_taken = employee.leave_taken.to_f + total_days
-    employee.update(leave_taken: leave_taken)
-	end
-
   def days_applied(leave)
     @employee = leave.user
     @leave_date = @employee.leave_taken

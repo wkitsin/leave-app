@@ -1,0 +1,12 @@
+Check your colleague's leave and leave them alone
+<br>
+<br>
+<% @compiled_leave.each do |key, value| %>
+  <%= key %>
+  <br>
+  <% value.each do |i| %>
+    <%= i.to_date.strftime('%a, %d %b %Y') %>
+    <br>
+  <% end %>
+  <br>
+<% end %>

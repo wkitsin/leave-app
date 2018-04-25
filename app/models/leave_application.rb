@@ -31,4 +31,28 @@ class LeaveApplication < ApplicationRecord
     end
   end
 
+  def approve_leave(approval, employee)
+    if approval == 'approve'
+      self.update(approved: 'Approved :)')
+
+      # check of half day or full day
+      self.half_or_full_day
+      return true
+    else
+      self.update(approved: 'Not Approved')
+      return false 
+    end
+  end
+
+  def half_or_full_day
+    total_days = leave_date.count(',')
+    if category == 'Annual Leave'
+      total_days = total_days + 1
+    elsif category[0..3] == 'Half'
+      total_days = total_days + 0.5
+    end
+    leave_taken = user.leave_taken.to_f + total_days
+    user.update(leave_taken: leave_taken)
+  end
+
 end

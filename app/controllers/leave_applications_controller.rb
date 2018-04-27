@@ -1,14 +1,13 @@
 class LeaveApplicationsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :leave_calculation, only: [:create]
 
   def index
     @leave = current_user.leave_applications.order(id: :ASC)
     @array = LeaveApplication.includes(:user).where('users.hod_email = ?', "#{current_user.email}").references(:users)
     @HOD = User.where(hod_email: current_user.email).order(id: :ASC)
     @leave_id = @leave.count + @array.count
-    @count = 1
+    @count = 1 
   end
 
   def create

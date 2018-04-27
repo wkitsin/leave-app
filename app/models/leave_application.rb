@@ -3,6 +3,7 @@ class LeaveApplication < ApplicationRecord
   validates_presence_of :leave_date
   before_create :check_applied_dates
   before_save :rearrange_dates, :check_for_past_dates
+  before_save :leave_calculation, if: :leave_date_changed?
   before_destroy :check_for_past_dates
 
   def check_applied_dates
@@ -13,6 +14,15 @@ class LeaveApplication < ApplicationRecord
     end
     if @leave_array.length != 0
       errors.add(:leave_date, 'the date has already been taken' )
+      throw :abort
+    end
+  end
+
+  def leave_calculation
+    applied_leave = leave_date.count(',') + 1
+    balance = user.balace
+    if balance - applied_leave < 0
+      errors.add(:leave_date, "The Annual Leave Application was not allowed because you do not have any remaining annual leave to spare")
       throw :abort
     end
   end
@@ -40,7 +50,7 @@ class LeaveApplication < ApplicationRecord
       return true
     else
       self.update(approved: 'Not Approved')
-      return false 
+      return false
     end
   end
 
@@ -54,5 +64,7 @@ class LeaveApplication < ApplicationRecord
     leave_taken = user.leave_taken.to_f + total_days
     user.update(leave_taken: leave_taken)
   end
+
+
 
 end

@@ -1,0 +1,54 @@
+<table>
+  <tr >
+    <th class="applied-th-2">Email</th>
+    <th class="applied-th-3">Requested Date</th>
+    <th class="applied-th-1">Total Days</th>
+    <th class="applied-th-4">Category</th>
+    <th style="applied-th-7">Reason</th>
+    <th class="applied-th-6">Approval</th>
+  </tr>
+  <% array.each do |f| %>
+    <tr>
+      <td> <%= f.user.email %> </td>
+      <td>
+        <%= f.leave_date %>
+      </td>
+      <td><%= f.leave_date.count(',') + 1%></td>
+      <td> <%= f.category %> </td>
+      <td> <%= f.description %> </td>
+      <td class="approval-col">
+        <% if f.approved == 'N/A' %>
+          <div class="pending">
+            <span>Pending</span>
+          </div>
+        <% elsif f.approved == 'Approved :)' %>
+          <div class="approved">
+            <span>Approved :)</span>
+          </div>
+        <% else %>
+          <div class="not-approved">
+            <span>Not Approved</span>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <% @count = @count + 1 %>
+  <% end %>
+</table>
+
+<br>
+<hr>
+
+<h4> Remaining leave days </h4>
+<table class="remaining-days-table">
+  <tr>
+    <th>Email</th>
+    <th>Balance Leave Days</th>
+  </tr>
+  <% hod.each do |f| %>
+    <tr>
+      <td> <%= f.email %> </td>
+      <td> <%= f.balace %> </td>
+    </tr>
+  <% end %>
+</table>

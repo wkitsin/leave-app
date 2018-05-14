@@ -1,0 +1,52 @@
+<input class='calender-size' type="hidden" value=<%= @leave_id %>>
+<h1> <%= current_user.department %> </h1>
+<br>
+<h4> Your Applied Leave</h4>
+<table>
+  <tr>
+    <th class="applied-th-1"></th>
+    <th class="applied-th-2">Email</th>
+    <th class="applied-th-3">Requested Date</th>
+    <th class="applied-th-1">Total Days</th>
+    <th class="applied-th-4">Category</th>
+    <th class="applied-th 5">Reason</th>
+    <th class="applied-th-6">Approval</th>
+  </tr>
+  <% @leave.each do |f| %>
+  <tr>
+    <td>
+      <div class="dropdown">
+        <% if f.leave_date.split(',')[0].to_datetime > Time.now %>
+          <button class="dropbtn">OPTIONS</button>
+          <div class="dropdown-content">
+            <p><%= link_to 'Delete', leave_application_path(f.id), class: 'edit-links', method: :delete %></p>
+            <p><%= link_to 'Edit', edit_leave_application_path(f.id), class: 'edit-links' %></p>
+          </div>
+        <% end %>
+      </div>
+    </td>
+    <td> <%= f.user.email %> </td>
+    <td>
+      <%= f.leave_date %>
+    </td>
+    <td><%= f.leave_date.count(',') + 1 %></td>
+    <td> <%= f.category %> </td>
+    <td> <%= f.description %> </td>
+    <td class="approval-col">
+      <% if f.approved == 'N/A' %>
+        <div class="pending">
+          <span>Pending</span>
+        </div>
+      <% elsif f.approved == 'Approved :)' %>
+        <div class="approved">
+          <span>Approved :)</span>
+        </div>
+      <% else %>
+        <div class="not-approved">
+          <span>Not Approved</span>
+        </div>
+      <% end %>
+  </tr>
+  <% @count = @count + 1 %>
+<% end %>
+</table>

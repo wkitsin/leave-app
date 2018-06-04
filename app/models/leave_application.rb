@@ -41,7 +41,7 @@ class LeaveApplication < ApplicationRecord
     end
   end
 
-  def approve_leave(approval, employee)
+  def approve_leave(approval)
     if approval == 'approve'
       self.update(approved: 'Approved :)')
 

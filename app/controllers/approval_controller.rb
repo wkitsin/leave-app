@@ -4,7 +4,7 @@ class ApprovalController < ApplicationController
     leave_day = LeaveApplication.find(params[:leave_id])
     employee = leave_day.user
     # Check if hod approve leave
-    approved = leave_day.approve_leave(params['approval'], employee)
+    approved = leave_day.approve_leave(params['approval'])
 
     if approved == true
       flash[:notice] = "#{employee.email} #{leave_day.category} was granted, and the balance annual leave is #{employee.balace}"

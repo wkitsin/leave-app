@@ -4,7 +4,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   }
-  
+
+  validates :hod_email, presence: true
+
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 

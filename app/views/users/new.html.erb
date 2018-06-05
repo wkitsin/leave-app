@@ -4,7 +4,7 @@
       <div class="container">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Edit employee's leave days</h4><br>
+            <h4 class="card-title">Create new employee </h4><br>
               <%= form_for @user do |f| %>
               <table>
                 <tr>
@@ -13,7 +13,8 @@
                 </tr>
                 <tr>
                   <td><%= f.label :title, "Title:" %></td>
-                  <td><%= f.text_field :title , class: 'create-employee' %> </td>
+                  <td><%= f.select :title , options_for_select(["None",
+                    "BURO", "RR", "STAIL", "ALL"]), class: 'create-employee' %> </td>
                 </tr>
                 <tr>
                   <td><%= f.label :total_al, "Annual Leave:" %></td>
@@ -28,12 +29,17 @@
                   <td><%= f.number_field :replacement_leave , step: '.5', class: 'create-employee' %> </td>
                 </tr>
                 <tr>
-                  <td><%= f.label :hod_email ,'HOD_email:'%></td>
+                  <td><%= f.label :hod_email ,'HOD Email:'%></td>
                   <td><%= f.text_field :hod_email, class: 'create-employee' %> </td>
                 </tr>
                 <tr>
                   <td><%= f.label :department ,'Department:'%></td>
                   <td><%= f.text_field :department, placeholder: 'Example: marketing',class: 'create-employee' %> </td>
+                </tr>
+                <tr>
+                  <td><%= f.label :role, 'Admin Status:' %></td>
+                  <td><%= f.select :role , options_for_select(["None",
+                    ["Head Of Department", "admin"], ["HR", "super-admin"]]), class: 'create-employee' %></td>
                 </tr>
               </table>
             <br>

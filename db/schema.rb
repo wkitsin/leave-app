@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208030127) do
+ActiveRecord::Schema.define(version: 20180605035809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 20180208030127) do
     t.string "title"
     t.string "department"
     t.string "hod_email"
-    t.integer "total_al", default: 0
-    t.decimal "bring_forward", precision: 10, scale: 1, default: "0.0"
-    t.decimal "replacement_leave", precision: 10, scale: 1, default: "0.0"
-    t.decimal "total_leave", precision: 10, scale: 1, default: "0.0"
-    t.decimal "leave_taken", precision: 10, scale: 1, default: "0.0"
-    t.decimal "balace", precision: 10, scale: 1, default: "0.0"
+    t.decimal "total_al", precision: 10, scale: 1, default: "0.0"
+    t.decimal "bring_forward", precision: 10, scale: 1, default: "0.0", null: false
+    t.decimal "replacement_leave", precision: 10, scale: 1, default: "0.0", null: false
+    t.decimal "total_leave", precision: 10, scale: 1, default: "0.0", null: false
+    t.decimal "leave_taken", precision: 10, scale: 1, default: "0.0", null: false
+    t.decimal "balace", precision: 10, scale: 1, default: "0.0", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

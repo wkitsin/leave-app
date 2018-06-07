@@ -7,7 +7,7 @@
             <h4 class="card-title">Edit employee's leave days</h4><br>
               <%= form_for @user do |f| %>
               <table>
-                <tr>
+              <tr>
                 <td><%= f.label :email, "Email:"%></td>
                 <td><%= f.text_field :email , class: 'edit-employee' %></td>
               </tr>
@@ -28,6 +28,10 @@
                 <td><%= f.label :role, 'Admin Status:' %></td>
                 <td><%= f.select :role , options_for_select(["None",
                   ["Head Of Department", "admin"], ["HR", "super-admin"]], "#{@user.role}"), class: 'create-employee' %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :hod_email, "HOD Email:"%></td>
+                <td><%= f.text_field :hod_email , class: 'edit-employee' %></td>
               </tr>
               <tr>
                 <td><%= f.label :replacement_leave, 'Replacement Leave:' %></td>

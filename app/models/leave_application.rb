@@ -13,7 +13,7 @@ class LeaveApplication < ApplicationRecord
       "%#{i}%"))
     end
     if @leave_array.length != 0
-      errors.add(:leave_date, 'the date has already been taken' )
+      errors.add(:leave_date, 'the date has already been applied' )
       throw :abort
     end
   end
@@ -64,7 +64,5 @@ class LeaveApplication < ApplicationRecord
     leave_taken = user.leave_taken.to_f + total_days
     user.update(leave_taken: leave_taken)
   end
-
-
 
 end

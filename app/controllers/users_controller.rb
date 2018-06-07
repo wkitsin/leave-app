@@ -37,13 +37,17 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
+    rep_date = params[:user][:replacement_leave]
+    user.add_on_replacement_leave(rep_date) unless rep_date.empty?
     user.update(update_params)
+
     if user
+       UserMailer.replacement_leave_update(params[:replacement_reason], rep_date, user).deliver_later unless params[:replacement_reason].empty?
       flash[:notice] = "#{user.email}'s details has been updated"
     else
       flash[:notice] = user.errors.messages
     end
-      redirect_to users_path
+    redirect_to users_path
   end
 
   def destroy
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
   private
 
   def update_params
-    params.require(:user).permit(:email, :title, :total_al, :replacement_leave,
+    params.require(:user).permit(:email, :title, :total_al,
       :bring_forward, :hod_email, :department, :role)
   end
 

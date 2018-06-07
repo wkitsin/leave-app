@@ -33,4 +33,9 @@ class User < ApplicationRecord
       self.update_columns(total_leave: tot_leave, balace: balance)
     end
   end
+
+  def add_on_replacement_leave(rep_leave_dates)
+    rep = replacement_leave + rep_leave_dates.count(',') + 1
+    self.replacement_leave = rep
+  end
 end

@@ -25,13 +25,15 @@
                 <td><%= f.number_field :bring_forward ,  min: 0, step: 0.5, class: 'edit-employee' %></td>
               </tr>
               <tr>
-                <td><%= f.label :replacement_leave ,'Replacement Leave:'%></td>
-                <td><%= f.number_field :replacement_leave , min: 0, step: 0.5, class: 'edit-employee' %></td>
-              </tr>
-              <tr>
                 <td><%= f.label :role, 'Admin Status:' %></td>
                 <td><%= f.select :role , options_for_select(["None",
                   ["Head Of Department", "admin"], ["HR", "super-admin"]], "#{@user.role}"), class: 'create-employee' %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :replacement_leave, 'Replacement Leave:' %></td>
+                <td><%= f.text_field :replacement_leave , placeholder: "Select Date to Replace", readonly: "readonly",
+                value: "", class: "flatpickr flatpickr-input active"%><br><br>
+                <%= text_field_tag "replacement_reason", nil, placeholder: "Please insert details of the replacement leave" %></td>
               </tr>
               </table>
               <br>

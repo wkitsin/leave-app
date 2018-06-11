@@ -68,7 +68,6 @@ $light-yellow: #fcfbcf;
 .border-image {
   width: 100%;
   height: 100%;
-  background-image: url(<%= asset_path 'border-image.png' %>);
   background-size: contain;
   background-position: center;
   margin: 0 auto;
@@ -197,4 +196,23 @@ $light-yellow: #fcfbcf;
 .edit-employee {
   outline-width: 1px;
   outline-color: dimgrey;
+}
+
+.calenderindex-container {
+  margin-left: 2vw;
+}
+
+.leave-date::before {
+  content: "- ";
+}
+
+.leave-date {
+  font-style: italic;
+  font-size: calc(10px + 0.3vw);
+}
+
+.user-leaves {
+  display: inline-block;
+  margin: 0 2vw;
+  vertical-align: top;
 }

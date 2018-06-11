@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 20180605035809) do
     t.string "department"
     t.string "hod_email"
     t.decimal "total_al", precision: 10, scale: 1, default: "0.0"
-    t.decimal "bring_forward", precision: 10, scale: 1, default: "0.0", null: false
-    t.decimal "replacement_leave", precision: 10, scale: 1, default: "0.0", null: false
-    t.decimal "total_leave", precision: 10, scale: 1, default: "0.0", null: false
-    t.decimal "leave_taken", precision: 10, scale: 1, default: "0.0", null: false
-    t.decimal "balace", precision: 10, scale: 1, default: "0.0", null: false
+    t.decimal "bring_forward", precision: 10, scale: 1, default: "0.0"
+    t.decimal "replacement_leave", precision: 10, scale: 1, default: "0.0"
+    t.decimal "total_leave", precision: 10, scale: 1, default: "0.0"
+    t.decimal "leave_taken", precision: 10, scale: 1, default: "0.0"
+    t.decimal "balace", precision: 10, scale: 1, default: "0.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

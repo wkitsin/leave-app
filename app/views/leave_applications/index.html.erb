@@ -1,5 +1,4 @@
 <div class="leave-page">
-  <div class="border-image-container"><%= image_tag("border-image.png", :class => "border-image") %></div>
   <div class="leave-container">
     <% if @leave.length == 0 %>
       <h3> You have not applied for any leave </h3>
@@ -13,5 +12,4 @@
     <%= employee_previous_leave_application(@array, @HOD, @count) %>
   <% end %>
   </div>
-<div class="border-image-container-2"><%= image_tag("border-image.png", :class => "border-image") %></div>
 </div>

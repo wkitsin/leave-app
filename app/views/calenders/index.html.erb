@@ -1,12 +1,16 @@
-Check your colleague's leave and leave them alone
-<br>
-<br>
-<% @hash.each do |key, value| %>
-  <%= key %>
+<div class="calenderindex-container">
+  Check your colleague's leave and leave them alone
   <br>
-  <% value.each do |i| %>
-    <%= i.to_date.strftime('%a, %d %b %Y') %>
-    <br>
+  <br>
+  <% @hash.each do |key, value| %>
+    <div class="user-leaves">
+      <strong><%= key %></strong>
+
+      <% value.each do |i| %>
+        <div class="leave-date"><%= i.to_date.strftime('%a, %d %b %Y') %></div>
+
+      <% end %>
+      <br>
+    </div>
   <% end %>
-  <br>
-<% end %>
+</div>

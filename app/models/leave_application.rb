@@ -13,7 +13,7 @@ class LeaveApplication < ApplicationRecord
       "%#{i}%"))
     end
     if @leave_array.length != 0
-      errors.add(:leave_date, 'the date has already been applied' )
+      errors.add(:leave_date, 'has already been applied' )
       throw :abort
     end
   end
@@ -21,8 +21,8 @@ class LeaveApplication < ApplicationRecord
   def leave_calculation
     applied_leave = leave_date.count(',') + 1
     balance = user.balace
-    if balance - applied_leave < 0
-      errors.add(:leave_date, "The Annual Leave Application was not allowed because you do not have any remaining annual leave to spare")
+    if (balance - applied_leave < 0) and category == 'Annual Leave'
+      errors.add(:leave_date, "was not allowed because you do not have any remaining annual leave to spare")
       throw :abort
     end
   end

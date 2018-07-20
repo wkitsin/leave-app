@@ -16,8 +16,8 @@ class LeaveApplicationsController < ApplicationController
       LeaveApplicationMailer.create_leave_email(current_user, leave).deliver_later
       flash[:notice] = "The date of leave has been submitted to #{current_user.hod_email} for approval"
     else
-      error = leave.errors.messages[:leave_date][0]
-      flash[:notice] = "The leave date was not save because the date #{error}"
+
+      flash[:notice] = leave.errors.full_messages.to_sentence
     end
     redirect_to root_path
   end
